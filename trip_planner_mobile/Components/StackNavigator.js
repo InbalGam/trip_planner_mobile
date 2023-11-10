@@ -12,7 +12,7 @@ function Login(props) {
     return (
         <View style={styles.layout}>
           <Text style={styles.title}>Login</Text>
-          <Button title='Main' onPress={() => props.navigation.navigate('The Trip Planner')}/>
+          <Button title='Main' onPress={() => props.navigation.navigate('Main')}/>
         </View>
       );
 };
@@ -23,7 +23,13 @@ export default function StackNavigator() {
     return (
         <Stack.Navigator>
            <Stack.Screen name="Login" component={Login} />
-           <Stack.Screen name="The Trip Planner" component={TabNavigators} options={{ headerLeft: () => <></> }}/> 
+           <Stack.Screen name="Main" component={TabNavigators} options={{ 
+                                                                headerLeft: () => <></>, 
+                                                                title: 'The Trip Planner',
+                                                                headerTitleAlign: 'center',
+                                                                headerTitleStyle: {
+                                                                    fontWeight: '600'
+                                                                }}}/> 
            {/* The headerLeft removes the back button */}
         </Stack.Navigator>
       );
