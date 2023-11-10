@@ -23,7 +23,8 @@ export default function StackNavigator() {
     return (
         <Stack.Navigator>
            <Stack.Screen name="Login" component={Login} />
-           <Stack.Screen name="The Trip Planner" component={TabNavigators} options={{ headerLeft: () => <></> }}/>
+           <Stack.Screen name="The Trip Planner" component={TabNavigators} options={{ headerLeft: () => <></> }}/> 
+           {/* The headerLeft removes the back button */}
         </Stack.Navigator>
       );
 };
