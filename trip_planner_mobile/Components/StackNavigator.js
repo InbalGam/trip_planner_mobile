@@ -2,20 +2,22 @@ import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import TabNavigators from './TabNavigators';
+import Login from './Login';
 
 const Stack = createStackNavigator();
 
 
 ////////////////////////////////////////////////////////////////////////////////////////
 // Temporary components, just to check the navigation
-function Login(props) {
-    return (
-        <View style={styles.layout}>
-          <Text style={styles.title}>Login</Text>
-          <Button title='Main' onPress={() => props.navigation.navigate('Main')}/>
-        </View>
-      );
-};
+
+// function Login(props) {
+//     return (
+//         <View style={styles.layout}>
+//           <Text style={styles.title}>Login</Text>
+//           <Button title='Main' onPress={() => props.navigation.navigate('Main')}/>
+//         </View>
+//       );
+// };
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
