@@ -34,7 +34,6 @@ export default function Login() {
                     <Formik
                     initialValues={{ username: '', password: '' }}
                     onSubmit={async (values) => {
-                        console.log(values);
                         setIsLoading(true);
                         try {
                             const result = await login(values.username, values.password);
