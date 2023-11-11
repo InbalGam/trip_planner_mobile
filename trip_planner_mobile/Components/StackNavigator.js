@@ -24,7 +24,15 @@ function SignUp() {
           <Text style={styles.title}>sign up</Text>
         </View>
       );
-  };
+};
+
+function Error() {
+    return (
+        <View style={styles.layout}>
+          <Text style={styles.title}>Server Error</Text>
+        </View>
+      );
+};
 ////////////////////////////////////////////////////////////////////////////////////////
 
 export default function StackNavigator() {
@@ -32,6 +40,7 @@ export default function StackNavigator() {
         <Stack.Navigator>
            <Stack.Screen name="Login" component={Login} />
            <Stack.Screen name="Signup" component={SignUp} />
+           <Stack.Screen name="Error" component={Error} />
            <Stack.Screen name="Main" component={TabNavigators} options={{ 
                                                                 headerLeft: () => <></>, 
                                                                 title: 'The Trip Planner',
