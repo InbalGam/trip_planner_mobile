@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import TabNavigators from './TabNavigators';
 import Login from './Login';
+import Signup from './Signup';
 
 const Stack = createStackNavigator();
 
@@ -18,13 +19,6 @@ const Stack = createStackNavigator();
 //         </View>
 //       );
 // };
-function SignUp() {
-    return (
-        <View style={styles.layout}>
-          <Text style={styles.title}>sign up</Text>
-        </View>
-      );
-};
 
 function Error() {
     return (
@@ -40,7 +34,7 @@ export default function StackNavigator() {
         <Stack.Navigator 
             screenOptions={{ headerStyle: { backgroundColor: '#faf5ff' } }}>
            <Stack.Screen name="Login" component={Login} />
-           <Stack.Screen name="Signup" component={SignUp} />
+           <Stack.Screen name="Signup" component={Signup} />
            <Stack.Screen name="Error" component={Error} />
            <Stack.Screen name="Main" component={TabNavigators} options={{ 
                                                                 headerLeft: () => <></>, 
