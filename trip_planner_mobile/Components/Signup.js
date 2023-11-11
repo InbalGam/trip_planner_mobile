@@ -5,7 +5,7 @@ import {register} from '../Api';
 import { Formik } from 'formik';
 import * as Progress from 'react-native-progress';
 import googleIconImageSrc from "../assets/google-icon.png";
-import { baseURL } from '../apiKey';
+import { baseURL } from '../appInfo';
 import {validateEmail} from '../utils';
 
 export default function Signup() {
