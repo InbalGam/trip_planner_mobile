@@ -37,7 +37,8 @@ function Error() {
 
 export default function StackNavigator() {
     return (
-        <Stack.Navigator>
+        <Stack.Navigator 
+            screenOptions={{ headerStyle: { backgroundColor: '#faf5ff' } }}>
            <Stack.Screen name="Login" component={Login} />
            <Stack.Screen name="Signup" component={SignUp} />
            <Stack.Screen name="Error" component={Error} />
@@ -56,7 +57,7 @@ export default function StackNavigator() {
 const styles = StyleSheet.create({
     layout: {
       flex: 1,
-      backgroundColor: '#fff',
+      backgroundColor: '#faf5ff',
       alignItems: 'center',
       justifyContent: 'center',
     },

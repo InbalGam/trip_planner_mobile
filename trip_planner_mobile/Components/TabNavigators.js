@@ -35,7 +35,8 @@ function Profile() {
 
 export default function TabNavigators() {
     return (
-      <Tab.Navigator>
+      <Tab.Navigator 
+        screenOptions={{tabBarStyle: { backgroundColor: '#faf5ff' }}}>
         <Tab.Screen name="Trips" component={Trips} />
         <Tab.Screen name="Profile" component={Profile} />
         <Tab.Screen name="Logout" component={Logout} />
@@ -47,7 +48,7 @@ export default function TabNavigators() {
 const styles = StyleSheet.create({
   layout: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#faf5ff',
     alignItems: 'center',
     justifyContent: 'center',
   },
