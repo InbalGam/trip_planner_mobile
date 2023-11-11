@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, Alert } from 'react-native';
+import { StyleSheet, Text, TextInput, View, Button, Alert, Pressable  } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {login} from '../Api';
+import { Formik } from 'formik';
 import * as Progress from 'react-native-progress';
 
 export default function Login() {
@@ -11,15 +12,70 @@ export default function Login() {
 
     const ifAuthFailed = () => {
         Alert.alert('Authentication failed', 'Username or Password are incorrect, try again', [
-            {text: 'OK', onPress: () => console.log('OK Pressed')}, // TODO: remove username & password inputs + setAuthFailed(false)
+            {text: 'OK', onPress: () => setAuthFailed(false)},
           ]);
+    };
+
+
+    function SubmitButton(props) {
+        const { onPress, title = '', disabled } = props;
+        return (
+          <Pressable style={styles.loginButton} onPress={onPress} disabled={disabled}>
+            <Text style={styles.buttonText}>{title}</Text>
+          </Pressable>
+        );
     };
 
 
     return (
         <View style={styles.layout}>
-            {isLoading ? <Progress.CircleSnail spinDuration={0}/> : <Button title='Main' onPress={() => nav.navigate('Main')}/>}
-            {authFailed ? ifAuthFailed() : <Text>All OK</Text>}
+            {isLoading ? <Progress.CircleSnail spinDuration={0} /> :
+                <View>
+                    <Formik
+                    initialValues={{ username: '', password: '' }}
+                    onSubmit={async (values) => {
+                        console.log(values);
+                        setIsLoading(true);
+                        try {
+                            const result = await login(values.username, values.password);
+                            if (result === true) {
+                                console.log(result);
+                                nav.navigate('Main');
+                                setIsLoading(false);
+                            } else {
+                                setAuthFailed(true);
+                                setIsLoading(false);
+                            }
+                        } catch (e) {
+                            nav.navigate('Error');
+                            setIsLoading(false);
+                        }
+                      }}
+                    >
+                        {({ handleChange, handleBlur, handleSubmit, isSubmitting, values }) => (
+                            <View >
+                                <TextInput 
+                                    style={styles.input}
+                                    placeholder='Username'
+                                    onChangeText={handleChange('username')}
+                                    onBlur={handleBlur('username')}
+                                    value={values.username}
+                                />
+                                <TextInput
+                                    style={styles.input}
+                                    placeholder='Password'
+                                    onChangeText={handleChange('password')}
+                                    onBlur={handleBlur('password')}
+                                    secureTextEntry={true}
+                                    value={values.password}
+                                />
+                                <SubmitButton onPress={handleSubmit}  title='Login' disabled={isSubmitting} />
+                            </View>
+                        )}
+                    </Formik>
+                    <Text style={styles.text} onPress={() => nav.navigate('Signup')}>Dont have an account? Sign Up</Text>
+                </View>}
+            {authFailed ? ifAuthFailed() : ''}
         </View>
     )
 };
@@ -27,13 +83,36 @@ export default function Login() {
 const styles = StyleSheet.create({
     layout: {
       flex: 1,
-      backgroundColor: '#fff',
+      backgroundColor: '#faf5ff',
       alignItems: 'center',
       justifyContent: 'center',
+      width: '100%'
     },
-    title: {
-      fontWeight: 'bold',
-      fontSize: 16
-    }
+    text: {
+      fontSize: 16,
+      marginTop: 40
+    },
+    input: {
+        borderLeftWidth: 2,
+        borderBottomWidth: 2,
+        borderRightWidth: 2,
+        borderTopWidth: 2,
+        borderColor: 'rgb(192 199 203)',
+        marginBottom: 24,
+        borderRadius: 12,
+        padding: 8,
+        paddingHorizontal: '10%',
+        textAlign: 'center'
+    },
+    loginButton: {
+        backgroundColor: '#dbc0f5',
+        borderRadius: 12,
+        padding: 8
+    },
+    buttonText: {
+        fontSize: 16,
+        textAlign: 'center'
+      },
+    link: {}
 });
 
