@@ -18,13 +18,20 @@ const Stack = createStackNavigator();
 //         </View>
 //       );
 // };
-
+function SignUp() {
+    return (
+        <View style={styles.layout}>
+          <Text style={styles.title}>sign up</Text>
+        </View>
+      );
+  };
 ////////////////////////////////////////////////////////////////////////////////////////
 
 export default function StackNavigator() {
     return (
         <Stack.Navigator>
            <Stack.Screen name="Login" component={Login} />
+           <Stack.Screen name="Signup" component={SignUp} />
            <Stack.Screen name="Main" component={TabNavigators} options={{ 
                                                                 headerLeft: () => <></>, 
                                                                 title: 'The Trip Planner',
