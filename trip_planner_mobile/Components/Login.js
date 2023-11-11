@@ -38,7 +38,6 @@ export default function Login() {
                         try {
                             const result = await login(values.username, values.password);
                             if (result === true) {
-                                console.log(result);
                                 nav.navigate('Main');
                                 setIsLoading(false);
                             } else {
