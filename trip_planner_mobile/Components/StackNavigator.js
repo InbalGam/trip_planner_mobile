@@ -19,6 +19,14 @@ const Stack = createStackNavigator();
 //         </View>
 //       );
 // };
+function Trips() {
+  return (
+      <View style={styles.layout}>
+        <Text style={styles.title}>Trips</Text>
+      </View>
+    );
+};
+
 
 function Error() {
     return (
@@ -36,14 +44,12 @@ export default function StackNavigator() {
            <Stack.Screen name="Login" component={Login} />
            <Stack.Screen name="Signup" component={Signup} />
            <Stack.Screen name="Error" component={Error} />
-           <Stack.Screen name="Main" component={TabNavigators} options={{ 
-                                                                headerLeft: () => <></>, 
+           <Stack.Screen name="Trips" component={Trips} options={{  
                                                                 title: 'The Trip Planner',
                                                                 headerTitleAlign: 'center',
                                                                 headerTitleStyle: {
                                                                     fontWeight: '600'
-                                                                }}}/> 
-           {/* The headerLeft removes the back button */}
+                                                                }}}/>
         </Stack.Navigator>
       );
 };

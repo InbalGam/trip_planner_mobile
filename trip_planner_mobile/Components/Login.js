@@ -50,7 +50,7 @@ export default function Login() {
                         try {
                             const result = await login(values.username, values.password);
                             if (result === true) {
-                                nav.navigate('Main');
+                                nav.navigate('Trips');
                                 setIsLoading(false);
                             } else {
                                 setAuthFailed(true);
