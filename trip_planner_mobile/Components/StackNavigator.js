@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import TabNavigators from './TabNavigators';
 import Login from './Login';
 import Signup from './Signup';
+import TripsList from './TripsList';
 
 const Stack = createStackNavigator();
 
@@ -44,7 +45,7 @@ export default function StackNavigator() {
            <Stack.Screen name="Login" component={Login} />
            <Stack.Screen name="Signup" component={Signup} />
            <Stack.Screen name="Error" component={Error} />
-           <Stack.Screen name="Trips" component={Trips} options={{  
+           <Stack.Screen name="Trips" component={TripsList} options={{  
                                                                 title: 'The Trip Planner',
                                                                 headerTitleAlign: 'center',
                                                                 headerTitleStyle: {
