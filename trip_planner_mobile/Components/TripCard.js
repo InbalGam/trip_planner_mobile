@@ -1,23 +1,13 @@
 import React from 'react';
 import { StyleSheet, View, Text, ImageBackground, TouchableOpacity, Dimensions} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { Icon } from 'react-native-elements'
+import { Icon } from 'react-native-elements';
 
 
 const {width} = Dimensions.get('screen');
 
 
-const exampleTrip = {
-    country: 'France',
-    city: 'Paris',
-    start_date: 'November 25, 2023',
-    end_date: 'November 30, 2023',
-    emails: 'emails',
-    photo: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MjcxOTZ8MHwxfHNlYXJjaHwxfHxGcmFuY2UlMkMlMjBQYXJpc3xlbnwwfHx8fDE2OTk3OTY0MjR8MA&ixlib=rb-4.0.3&q=80&w=1080'
-    //photo: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?ixid=M3w1MjcxOTZ8MHwxfHNlYXJjaHwxfHxGcmFuY2UlMkMlMjBQYXJpc3xlbnwwfHx8fDE2OTk3OTY0MjR8MA&ixlib=rb-4.0.3'
-};
-
-export default function TripCard() {
+export default function TripCard(props) {
     // const [showForm, setShowForm] = useState(false);
     // const [deleteFailed, setDeleteFailed] = useState(false);
     // const [updateFailed, setUpdateFailed] = useState(false);
@@ -28,14 +18,14 @@ export default function TripCard() {
     return (
         <TouchableOpacity activeOpacity={0.8} >
             <View style={styles.imageLayout}>
-                <ImageBackground source={{ uri: exampleTrip.photo }} style={styles.cardImage}>
+                <ImageBackground source={{ uri: props.photo }} style={styles.cardImage}>
                     <View style={styles.cardContent}>
                         <View style={styles.tripPlace}>
-                            <Text style={styles.countryText}>{exampleTrip.country} </Text>
-                            <Text style={styles.cityText}>{exampleTrip.city}</Text>
+                            <Text style={styles.countryText}>{props.country} </Text>
+                            <Text style={styles.cityText}>{props.city}</Text>
                         </View>
                         <View style={styles.dateLayout}>
-                            <Text style={styles.dateText}>{exampleTrip.start_date} - {exampleTrip.end_date}</Text>
+                            <Text style={styles.dateText}>{props.start_date} - {props.end_date}</Text>
                         </View>
                     </View>
                 </ImageBackground>
