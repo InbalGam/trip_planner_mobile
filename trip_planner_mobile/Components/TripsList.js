@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import {getTrips, insertTrip} from '../Api';
 import TripCard from './TripCard';
 import * as Progress from 'react-native-progress';
-//import { ScrollView } from 'react-native-gesture-handler';
+import { Icon } from 'react-native-elements';
 
 
 export default function TripsList() {
@@ -79,6 +79,9 @@ export default function TripsList() {
         <SafeAreaView style={styles.tripsLayout}>
             {isLoading ? <Progress.CircleSnail spinDuration={0} /> :
                 <View style={styles.trips}>
+                    <View style={styles.addTripContainer}>
+                        <Icon name='add' onPress={() => console.log('pressed add')} />
+                    </View>
                     <FlatList
                         data={trips}
                         renderItem={({ item }) => <TripCard trip={item} getUserTrips={getUserTrips} setShowForm={setShowForm} setIsLoading={setIsLoading}/>}
@@ -105,5 +108,8 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         textAlign: 'center',
         marginTop: 20
+    },
+    addTripContainer: {
+        
     }
 });
