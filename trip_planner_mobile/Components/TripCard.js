@@ -18,14 +18,14 @@ export default function TripCard(props) {
     return (
         <TouchableOpacity activeOpacity={0.8} >
             <View style={styles.imageLayout}>
-                <ImageBackground source={{ uri: props.photo }} style={styles.cardImage}>
+                <ImageBackground source={{ uri: props.trip.photo }} style={styles.cardImage}>
                     <View style={styles.cardContent}>
                         <View style={styles.tripPlace}>
-                            <Text style={styles.countryText}>{props.country} </Text>
-                            <Text style={styles.cityText}>{props.city}</Text>
+                            <Text style={styles.countryText}>{props.trip.country} </Text>
+                            <Text style={styles.cityText}>{props.trip.city}</Text>
                         </View>
                         <View style={styles.dateLayout}>
-                            <Text style={styles.dateText}>{props.start_date} - {props.end_date}</Text>
+                            <Text style={styles.dateText}>{props.trip.start_date} - {props.trip.end_date}</Text>
                         </View>
                     </View>
                 </ImageBackground>
@@ -36,7 +36,7 @@ export default function TripCard(props) {
 
 const styles = StyleSheet.create({
     imageLayout: {
-        alignSelf: 'flex-start'
+        marginVertical: 20
     },
     cardImage: {
         height: 220,
@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
         padding: 10,
         overflow: 'hidden',
         borderRadius: 10,
+        backgroundColor: 'white',
         opacity: 0.8
     },
     cardContent: {
@@ -57,12 +58,12 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-start'
     },
     countryText: {
-        color: 'white',
+        color: 'black',
         fontSize: 24,
         fontWeight: '600'
     },
     cityText: {
-        color: 'white',
+        color: 'black',
         fontSize: 24,
         fontWeight: '400'
     },
@@ -71,7 +72,7 @@ const styles = StyleSheet.create({
         marginTop: '45%'
     },
     dateText: {
-        color: 'white',
+        color: 'black',
         fontSize: 16,
         fontWeight: '600'
     }
