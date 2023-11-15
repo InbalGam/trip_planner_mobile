@@ -5,6 +5,7 @@ import TabNavigators from './TabNavigators';
 import Login from './Login';
 import Signup from './Signup';
 import TripsList from './TripsList';
+import TripAddUpdate from './TripAddUpdate';
 
 const Stack = createStackNavigator();
 
@@ -51,6 +52,7 @@ export default function StackNavigator() {
                                                                 headerTitleStyle: {
                                                                     fontWeight: '600'
                                                                 }}}/>
+          <Stack.Screen name="AddTrip" component={TripAddUpdate} />
         </Stack.Navigator>
       );
 };
