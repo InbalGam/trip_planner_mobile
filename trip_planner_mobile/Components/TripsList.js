@@ -80,7 +80,7 @@ export default function TripsList() {
             {isLoading ? <Progress.CircleSnail spinDuration={0} /> :
                 <View style={styles.trips}>
                     <View style={styles.addTripContainer}>
-                        <Icon name='add' onPress={() => console.log('pressed add')} />
+                        <Icon name='add' onPress={() => nav.navigate('AddTrip')} />
                     </View>
                     <FlatList
                         data={trips}
